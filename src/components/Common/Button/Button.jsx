@@ -14,10 +14,12 @@ function Button({ size, variant, disabled, children, onClick, go }) {
   };
 
   return (
-    <BtnStyle sizeStyle={sizeStyle}>
+    <BtnStyle
+      sizeStyle={sizeStyle}
       variantStyle={variantStyle}
       onClick={onClickHandler}
       disabled={disabled}
+    >
       {children}
     </BtnStyle>
   );
