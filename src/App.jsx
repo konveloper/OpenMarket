@@ -1,14 +1,14 @@
 import React from 'react';
-import { GlobalStyle } from './styles/GlobalStyles';
+import { GlobalStyle } from 'styles/GlobalStyles';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root from './pages/Root';
-import Splash from './pages/Splash/Splash';
-import Products from './pages/Products/Products';
-import ProductDetail from './pages/ProductDetail/ProductDetail';
-import Cart from './pages/Cart/Cart';
-import NotFound from './pages/NotFound/NotFound';
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
+import Root from 'pages/Root';
+import Splash from 'pages/Splash/Splash';
+import Products from 'pages/Products/Products';
+import ProductDetail from 'pages/ProductDetail/ProductDetail';
+import Cart from 'pages/Cart/Cart';
+import NotFound from 'pages/NotFound/NotFound';
+import Login from 'pages/Login/Login';
+import Signup from 'pages/Signup/Signup';
 
 const router = createBrowserRouter([
   {
