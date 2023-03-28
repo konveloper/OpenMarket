@@ -14,10 +14,10 @@ const H2IR = styled.h2`
 const LogoImg = styled.img`
   width: 238px;
   height: 74px;
-  margin: 100px 0 70px 0;
+  margin: 70px 0;
 `;
 
-const InputForm = styled.form`
+const ContInputForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 550px;
@@ -34,7 +34,7 @@ const InputForm = styled.form`
     width: 480px;
     height: 60px;
     border: transparent;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid var(--sub-grey);
     outline: none;
     margin-bottom: 20px;
     &:focus {
@@ -43,4 +43,4 @@ const InputForm = styled.form`
   }
 `;
 
-export { ContSection, H2IR, LogoImg, InputForm };
+export { ContSection, H2IR, LogoImg, ContInputForm };
