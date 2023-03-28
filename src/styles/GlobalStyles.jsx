@@ -1,22 +1,19 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
-
 ${reset};
-
 * {
       box-sizing: border-box;
     }
     :root {
       font-size: 62.5%;
-      --main-green: #91ba2d;
-      --point-green: #0a6d32;
-      --light-green: #dfecab;
-      --splash-bg-color: #f4fdcf;
-      --main-grey-76: #767676;
-      --sub-grey-C4: #c4c4c4;
-      --light-grey-F2: #f2f2f2;
+      --main: #6200EE;
+      --point: #3700B3;
+      --light: #BB86FC;
+      --main-grey: #767676;
+      --sub-grey: #c4c4c4;
+      --light-grey: #f2f2f2;
       --black: #000;
       --white: #fff;
       --bg-color: #E5E5E5;
@@ -52,6 +49,7 @@ ${reset};
     }
     input {
       font: inherit;
+      padding: 0;
     }
     textarea {
       border: none;
@@ -63,4 +61,26 @@ ${reset};
       resize: none;
       font: inherit;
     }
+`;
+
+export const Cont = css`
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--white);
+`;
+
+export const IR = css`
+  position: absolute;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+`;
+
+export const Ellipsis = css`
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

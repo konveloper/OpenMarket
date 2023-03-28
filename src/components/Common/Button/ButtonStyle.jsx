@@ -29,19 +29,19 @@ export const SIZES = {
 
 export const VARIANTS = {
   abled: css`
-    --background-color: var(--main-green);
+    --background-color: var(--main);
     --color: var(--white);
     --outline: none;
   `,
   disabled: css`
-    --background-color: var(--main-green);
+    --background-color: var(--main);
     --color: var(--white);
     --outline: none;
   `,
   active: css`
-    --background-color: var(--main-green);
+    --background-color: var(--main);
     --color: var(--white);
-    --outline: solid var(--sub-grey-C4);
+    --outline: solid var(--sub-grey);
   `,
 };
 export const BtnStyle = styled.button`
@@ -51,7 +51,7 @@ export const BtnStyle = styled.button`
   font-size: var(--button-font-size, 1.4rem);
   padding: var(--button-padding, 19px);
   border-radius: var(--button-radius, 5px);
-  background-color: var(--background-color, var(--main-green));
+  background-color: var(--background-color, var(--main));
   color: var(--color, var(--white));
   outline: var(--outline, none);
   &:disabled {
