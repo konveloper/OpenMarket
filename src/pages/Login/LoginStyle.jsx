@@ -5,6 +5,7 @@ const ContSection = styled.section`
   ${Cont}
   text-align: center;
   color: var(--main-grey);
+  background-color: #fff;
 `;
 
 const H2IR = styled.h2`
@@ -28,6 +29,7 @@ const ContInputForm = styled.form`
   border-radius: 10px;
   padding: 35px;
   button {
+    color: #fff;
     margin-top: 20px;
   }
   input {

@@ -14,14 +14,12 @@ ${reset};
       --main-grey: #767676;
       --sub-grey: #c4c4c4;
       --light-grey: #f2f2f2;
-      --black: #000;
-      --white: #fff;
-      --bg-color: #E5E5E5;
     }
     body {
       font-family: 'Spoqa Han Sans Neo', sans-serif;
       font-weight: 400;
       -ms-overflow-style: none;
+      background-color: var(--light-grey);
       scrollbar-width: none;
       &::-webkit-scrollbar {
         display: none;

@@ -24,11 +24,13 @@ const ContInputForm = styled.form`
   height: 580px;
   margin: 0 auto;
   text-align: left;
+  background-color: #fff;
   box-shadow: -1px 0 20px -1px #f2f2f2, 1px 0 20px -1px #f2f2f2;
   border-radius: 10px;
   padding: 35px;
   margin-bottom: 110px;
   button {
+    color: #fff;
     margin: 20px 0;
   }
   input {
