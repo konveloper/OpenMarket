@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 const ContFooter = styled.section`
   width: 100%;
-  height: 298px;
+  height: 250px;
   display: fixed;
+  position: absolute;
   bottom: 0;
+  left: 0;
   padding-left: 220px;
+  background-color: var(--light-grey);
 `;
 
 const FooterDiv = styled.div`
@@ -13,7 +16,7 @@ const FooterDiv = styled.div`
   flex-direction: column;
   position: relative;
   width: 900px;
-  margin-top: 60px;
+  margin-top: 50px;
 `;
 
 const BtnDiv = styled.div`
@@ -32,14 +35,14 @@ const YoutubeBtn = styled.button``;
 
 const LinkDiv = styled.div`
   display: flex;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--sub-grey);
 `;
 
 const InfoDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 const InfoStrong = styled.strong`
