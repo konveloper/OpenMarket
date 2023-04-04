@@ -1,4 +1,4 @@
-# 오픈마켓 (React)
+# 💳 오픈마켓 (React) 💳
 * 🔗 배포 URL
 * 🔒 서비스 이용 계정
   - ID:
@@ -23,7 +23,6 @@
 | Front-End        | `React` <br> `React Hooks`<br> `Styled Components` |
 | Back-End         | 제공되는 API 사용                                  |
 | 버전 및 이슈관리 | `Git`<br>`GitHub`                      |
-| 프로젝트 관리    | `Git Flow`<br>`Github Projects`<br>`Github issues`<br>`Milestones`|
 |배포           |`netlify`|내용|
 
 ## 3. 구현 기능
