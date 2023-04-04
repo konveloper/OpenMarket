@@ -11,6 +11,7 @@ const ContNav = styled.section`
   position: fixed;
   top: 0;
   background-color: #fff;
+  z-index: 1;
 `;
 
 const H2IR = styled.h2`
