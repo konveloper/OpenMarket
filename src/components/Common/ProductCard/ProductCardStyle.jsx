@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-const ContItem = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-`;
-
-const ProductDiv = styled.div`
+const ProductLi = styled.li`
   width: 250px;
   height: 300px;
   display: flex;
@@ -36,4 +31,4 @@ const PriceText = styled.strong`
   font-size: 2rem;
 `;
 
-export { ContItem, ProductDiv, ProductImg, SellerText, ProductName, PriceText };
+export { ProductLi, ProductImg, SellerText, ProductName, PriceText };
