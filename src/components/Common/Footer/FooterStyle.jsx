@@ -4,7 +4,6 @@ const ContFooter = styled.section`
   width: 100%;
   height: 250px;
   display: fixed;
-  position: absolute;
   bottom: 0;
   left: 0;
   padding-left: 220px;

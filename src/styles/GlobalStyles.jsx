@@ -19,7 +19,7 @@ ${reset};
       font-family: 'Spoqa Han Sans Neo', sans-serif;
       font-weight: 400;
       -ms-overflow-style: none;
-      background-color: var(--light-grey);
+      background-color: var(--white);
       scrollbar-width: none;
       &::-webkit-scrollbar {
         display: none;
