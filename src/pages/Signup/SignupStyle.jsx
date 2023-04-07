@@ -46,4 +46,15 @@ const ContInputForm = styled.form`
   }
 `;
 
-export { ContSection, LogoImg, H2IR, ContInputForm };
+const ContUserName = styled.div`
+  display: flex;
+  input {
+    width: 346px;
+    margin-right: 12px;
+  }
+  button {
+    width: 122px;
+  }
+`;
+
+export { ContSection, LogoImg, H2IR, ContInputForm, ContUserName };

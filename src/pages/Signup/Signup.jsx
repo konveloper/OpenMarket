@@ -4,7 +4,13 @@ import logoImg from 'assets/img/Logo-hodu.png';
 import Input from 'components/Common/Input/Input';
 import Button from 'components/Common/Button/Button';
 import postUserSignup from 'api/Signup/postUserSignup';
-import { ContSection, LogoImg, H2IR, ContInputForm } from './SignupStyle';
+import {
+  ContSection,
+  LogoImg,
+  H2IR,
+  ContInputForm,
+  ContUserName,
+} from './SignupStyle';
 
 const Signup = () => {
   const [signupForm, setSignupForm] = useState({
@@ -73,19 +79,22 @@ const Signup = () => {
       <H2IR>회원가입 페이지</H2IR>
       <LogoImg src={logoImg} />
       <ContInputForm onSubmit={SubmitHandler}>
-        <Input
-          label='아이디'
-          type='text'
-          name='username'
-          placeholder='영문, 숫자만 사용 가능합니다.'
-          min='6'
-          max='20'
-          defaultValue={signupForm}
-          onBlur={userNameHandler}
-          onChange={inputChangeHandler}
-          message={userNameErr}
-          required='required'
-        ></Input>
+        <ContUserName>
+          <Input
+            label='아이디'
+            type='text'
+            name='username'
+            placeholder='영문, 숫자만 사용 가능합니다.'
+            min='6'
+            max='20'
+            defaultValue={signupForm}
+            onBlur={userNameHandler}
+            onChange={inputChangeHandler}
+            message={userNameErr}
+            required='required'
+          />
+          <Button size='s'>중복 확인</Button>
+        </ContUserName>
         <Input
           label='비밀번호'
           type='password'
