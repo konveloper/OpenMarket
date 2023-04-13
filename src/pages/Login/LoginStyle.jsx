@@ -22,7 +22,7 @@ const ContInputForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 550px;
-  height: 320px;
+  height: 300px;
   margin: 0 auto;
   text-align: left;
   box-shadow: -1px 0 20px -1px #f2f2f2, 1px 0 20px -1px #f2f2f2;
@@ -34,7 +34,7 @@ const ContInputForm = styled.form`
   }
   input {
     width: 480px;
-    height: 60px;
+    height: 54px;
     border: transparent;
     border-bottom: 1px solid var(--sub-grey);
     outline: none;

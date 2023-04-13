@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logoImg from 'assets/img/Logo-hodu.png';
+import logoImg from 'assets/img/logo.svg';
 import Input from 'components/Common/Input/Input';
 import Button from 'components/Common/Button/Button';
 import postUserSignup from 'api/Signup/postUserSignup';
