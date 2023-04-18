@@ -50,7 +50,7 @@ const ContInputForm = styled.form`
   }
 `;
 
-const ContUserName = styled.div`
+const ContUsername = styled.div`
   display: flex;
   margin-bottom: 10px;
   input {
@@ -63,4 +63,4 @@ const ContUserName = styled.div`
   }
 `;
 
-export { ContSection, LogoImg, H2IR, ContInputForm, ContUserName };
+export { ContSection, LogoImg, H2IR, ContInputForm, ContUsername };

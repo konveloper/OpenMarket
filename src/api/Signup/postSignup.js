@@ -1,11 +1,10 @@
 import { instance } from 'api/api';
 
-const postUsernameIsValid = async (formData) => {
+const postSignup = async (formData) => {
   try {
-    const res = await instance.post(
-      '/accounts/signup/valid/username/',
-      formData
-    );
+    console.log(formData);
+    const res = await instance.post('/accounts/signup/', formData);
+    console.log(res.data);
     return res.data;
   } catch (err) {
     if (err.response) {
@@ -18,4 +17,4 @@ const postUsernameIsValid = async (formData) => {
   }
 };
 
-export default postUsernameIsValid;
+export default postSignup;

@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import logoImg from 'assets/img/logo.svg';
 import Input from 'components/Common/Input/Input';
 import Button from 'components/Common/Button/Button';
-import postUserSignup from 'api/Signup/postUserSignup';
+import postSignup from 'api/Signup/postSignup';
 import postUsernameIsValid from 'api/Signup/postUsernameIsValid';
 import {
   ContSection,
   LogoImg,
   H2IR,
   ContInputForm,
-  ContUserName,
+  ContUsername,
 } from './SignupStyle';
 
 const Signup = () => {
@@ -45,20 +45,16 @@ const Signup = () => {
   };
 
   const usernameValidationHandler = async () => {
-    try {
-      const usernameData = {
-        username: signupForm.username,
-      };
-      const res = await postUsernameIsValid(usernameData);
-      if (res.FAIL_Message === '이미 사용 중인 아이디입니다.') {
-        setUsernameErr(`${res.FAIL_Message}`);
-        setUsernameIsValid(false);
-      } else if (res.Success === '멋진 아이디네요 :)') {
-        setUsernameErr(`${res.Success}`);
-        setUsernameIsValid(true);
-      }
-    } catch (err) {
-      console.log(err);
+    const usernameData = {
+      username: signupForm.username,
+    };
+    const res = await postUsernameIsValid(usernameData);
+    if (res.FAIL_Message === '이미 사용 중인 아이디입니다.') {
+      setUsernameErr(`${res.FAIL_Message}`);
+      setUsernameIsValid(false);
+    } else if (res.Success === '멋진 아이디네요 :)') {
+      setUsernameErr(`${res.Success}`);
+      setUsernameIsValid(true);
     }
   };
 
@@ -66,8 +62,8 @@ const Signup = () => {
     if (!signupForm.password) {
       setPasswordErr('비밀번호는 필수 항목입니다.');
       setPasswordIsValid(false);
-    } else if (signupForm.password.length < 6) {
-      setPasswordErr('비밀번호는 6자 이상이어야 합니다.');
+    } else if (signupForm.password.length < 8) {
+      setPasswordErr('비밀번호는 8자 이상이어야 합니다.');
       setPasswordIsValid(false);
     } else {
       setPasswordErr('');
@@ -84,12 +80,8 @@ const Signup = () => {
   }, [signupForm.password]);
 
   const signupHandler = async (userData) => {
-    try {
-      const res = await postUserSignup(userData);
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await postSignup(userData);
+    console.log(res);
   };
 
   const SubmitHandler = (e) => {
@@ -97,9 +89,13 @@ const Signup = () => {
     const userData = {
       username: signupForm.username,
       password: signupForm.password,
+      password2: signupForm.password,
+      phone_number: '01057989241',
+      name: 'kon',
     };
     if (usernameIsValid && passwordIsValid) {
       signupHandler(userData);
+      alert('환영합니다!');
       navigate('/login');
     }
   };
@@ -109,7 +105,7 @@ const Signup = () => {
       <H2IR>회원가입 페이지</H2IR>
       <LogoImg src={logoImg} />
       <ContInputForm onSubmit={SubmitHandler}>
-        <ContUserName>
+        <ContUsername>
           <Input
             label='아이디'
             type='text'
@@ -125,14 +121,14 @@ const Signup = () => {
           <Button onClick={usernameValidationHandler} onsize='s'>
             중복 확인
           </Button>
-        </ContUserName>
+        </ContUsername>
         <div>
           <Input
             label='비밀번호'
             type='password'
             name='password'
-            placeholder='6자리 이상의 비밀번호를 설정해주세요.'
-            min='6'
+            placeholder='8자리 이상의 비밀번호를 설정해주세요.'
+            min='8'
             defaultValue={signupForm.password}
             onBlur={passwordHandler}
             onChange={inputChangeHandler}
