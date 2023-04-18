@@ -50,12 +50,11 @@ const Signup = () => {
         username: signupForm.username,
       };
       const res = await postUsernameIsValid(usernameData);
-      console.log(res);
-      if (res.message === '이미 사용 중인 아이디입니다.') {
-        setUsernameErr(`${res.message}`);
+      if (res.FAIL_Message === '이미 사용 중인 아이디입니다.') {
+        setUsernameErr(`${res.FAIL_Message}`);
         setUsernameIsValid(false);
-      } else if (res.message === '멋진 아이디네요 :)') {
-        setUsernameErr(`${res.message}`);
+      } else if (res.Success === '멋진 아이디네요 :)') {
+        setUsernameErr(`${res.Success}`);
         setUsernameIsValid(true);
       }
     } catch (err) {
