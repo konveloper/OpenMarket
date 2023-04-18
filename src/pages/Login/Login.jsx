@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import logoImg from 'assets/img/logo.svg';
 import Button from 'components/Common/Button/Button';
 import Input from 'components/Common/Input/Input';
-import { ContSection, H2IR, LogoImg, ContInputForm } from './LoginStyle';
+import {
+  ContSection,
+  H2IR,
+  LogoImg,
+  ContInputForm,
+  ContUsername,
+} from './LoginStyle';
 
 function Login() {
   return (
@@ -11,8 +17,12 @@ function Login() {
       <H2IR>로그인 페이지</H2IR>
       <LogoImg src={logoImg} alt='로고 이미지' />
       <ContInputForm>
-        <Input name='email' label='이메일' type='email' />
-        <Input name='pw' label='비밀번호' type='password' />
+        <ContUsername>
+          <Input label='아이디' type='text' name='username' />
+        </ContUsername>
+        <div>
+          <Input label='비밀번호' type='password' name='password' />
+        </div>
         <Button size='m'>로그인</Button>
       </ContInputForm>
       <Link

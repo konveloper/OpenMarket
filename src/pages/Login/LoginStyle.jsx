@@ -25,24 +25,35 @@ const ContInputForm = styled.form`
   height: 300px;
   margin: 0 auto;
   text-align: left;
+  background-color: #fff;
   box-shadow: -1px 0 20px -1px #f2f2f2, 1px 0 20px -1px #f2f2f2;
   border-radius: 10px;
   padding: 35px;
+  div {
+    margin-bottom: 10px;
+  }
   button {
     color: #fff;
-    margin-top: 20px;
   }
   input {
     width: 480px;
-    height: 54px;
+    height: 40px;
     border: transparent;
     border-bottom: 1px solid var(--sub-grey);
     outline: none;
-    margin-bottom: 20px;
+    span {
+      display: block;
+      margin-bottom: 50px;
+    }
     &:focus {
       border-bottom: 2px solid var(--point);
     }
   }
 `;
 
-export { ContSection, H2IR, LogoImg, ContInputForm };
+const ContUsername = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+`;
+
+export { ContSection, H2IR, LogoImg, ContInputForm, ContUsername };
