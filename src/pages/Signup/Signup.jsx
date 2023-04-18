@@ -17,11 +17,14 @@ const Signup = () => {
   const [signupForm, setSignupForm] = useState({
     username: '',
     password: '',
+    password2: '',
   });
   const [usernameErr, setUsernameErr] = useState('');
   const [usernameIsValid, setUsernameIsValid] = useState(false);
-  const [passwordErr, setPasswordErr] = useState('');
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [pwErr, setPwErr] = useState('');
+  const [pwIsValid, setPwIsValid] = useState(false);
+  const [pwCheckErr, setPwCheckErr] = useState('');
+  const [pwCheckIsValid, setPwCheckIsValid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,16 +61,32 @@ const Signup = () => {
     }
   };
 
-  const passwordHandler = () => {
+  const pwHandler = () => {
     if (!signupForm.password) {
-      setPasswordErr('비밀번호는 필수 항목입니다.');
-      setPasswordIsValid(false);
+      setPwErr('비밀번호는 필수 항목입니다.');
+      setPwIsValid(false);
     } else if (signupForm.password.length < 8) {
-      setPasswordErr('비밀번호는 8자 이상이어야 합니다.');
-      setPasswordIsValid(false);
+      setPwErr('비밀번호는 8자 이상이어야 합니다.');
+      setPwIsValid(false);
     } else {
-      setPasswordErr('');
-      setPasswordIsValid(true);
+      setPwErr('');
+      setPwIsValid(true);
+    }
+  };
+
+  const pwCheckHandler = () => {
+    if (!signupForm.password2) {
+      setPwCheckErr('비밀번호 재확인은 필수 항목입니다.');
+      setPwCheckIsValid(false);
+    } else if (signupForm.password2.length < 8) {
+      setPwCheckErr('비밀번호는 8자 이상이어야 합니다.');
+      setPwCheckIsValid(false);
+    } else if (signupForm.password !== signupForm.password2) {
+      setPwCheckErr('비밀번호를 동일하게 입력해주세요.');
+      setPwCheckIsValid(false);
+    } else {
+      setPwCheckErr('동일한 비밀번호입니다.');
+      setPwCheckIsValid(true);
     }
   };
 
@@ -76,7 +95,7 @@ const Signup = () => {
   }, [signupForm.username]);
 
   useEffect(() => {
-    setPasswordErr();
+    setPwErr();
   }, [signupForm.password]);
 
   const signupHandler = async (userData) => {
@@ -89,11 +108,11 @@ const Signup = () => {
     const userData = {
       username: signupForm.username,
       password: signupForm.password,
-      password2: signupForm.password,
+      password2: signupForm.password2,
       phone_number: '01057989241',
       name: 'kon',
     };
-    if (usernameIsValid && passwordIsValid) {
+    if (usernameIsValid && pwIsValid && pwCheckIsValid) {
       signupHandler(userData);
       alert('환영합니다!');
       navigate('/login');
@@ -129,10 +148,24 @@ const Signup = () => {
             name='password'
             placeholder='8자리 이상의 비밀번호를 설정해주세요.'
             min='8'
-            defaultValue={signupForm.password}
-            onBlur={passwordHandler}
+            defaultValue={signupForm.password2}
+            onBlur={pwHandler}
             onChange={inputChangeHandler}
-            message={passwordErr}
+            message={pwErr}
+          />
+        </div>
+
+        <div>
+          <Input
+            label='비밀번호 재확인'
+            type='password'
+            name='password2'
+            placeholder='동일한 비밀번호를 입력해주세요.'
+            min='8'
+            defaultValue={signupForm.password}
+            onBlur={pwCheckHandler}
+            onChange={inputChangeHandler}
+            message={pwCheckErr}
           />
         </div>
         <Button size='m'>{'오픈 마켓 시작하기'}</Button>
