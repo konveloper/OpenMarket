@@ -29,7 +29,7 @@ const MessageSpan = styled.span`
   font-style: normal;
   font-size: 1.2rem;
   line-height: 14px;
-  margin: 0 26px;
+  margin-bottom: 16px;
 `;
 
 export { ContDiv, InputStyle, MessageSpan };

@@ -21,25 +21,29 @@ const ContInputForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 550px;
-  height: 580px;
+  height: 330px;
   margin: 0 auto;
   text-align: left;
   background-color: #fff;
   box-shadow: -1px 0 20px -1px #f2f2f2, 1px 0 20px -1px #f2f2f2;
   border-radius: 10px;
   padding: 35px;
-  margin-bottom: 110px;
+  div {
+    margin-bottom: 10px;
+  }
   button {
     color: #fff;
-    margin: 20px 0;
   }
   input {
     width: 480px;
-    height: 54px;
+    height: 40px;
     border: transparent;
     border-bottom: 1px solid var(--sub-grey);
-    margin-bottom: 20px;
     outline: none;
+    span {
+      display: block;
+      margin-bottom: 50px;
+    }
     &:focus {
       border-bottom: 2px solid var(--point);
     }
@@ -48,12 +52,14 @@ const ContInputForm = styled.form`
 
 const ContUserName = styled.div`
   display: flex;
+  margin-bottom: 10px;
   input {
     width: 346px;
     margin-right: 12px;
   }
   button {
     width: 122px;
+    height: 50px;
   }
 `;
 

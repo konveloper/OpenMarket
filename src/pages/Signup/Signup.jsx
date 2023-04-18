@@ -4,6 +4,7 @@ import logoImg from 'assets/img/logo.svg';
 import Input from 'components/Common/Input/Input';
 import Button from 'components/Common/Button/Button';
 import postUserSignup from 'api/Signup/postUserSignup';
+import postUsernameIsValid from 'api/Signup/postUsernameIsValid';
 import {
   ContSection,
   LogoImg,
@@ -16,63 +17,93 @@ const Signup = () => {
   const [signupForm, setSignupForm] = useState({
     username: '',
     password: '',
-    password2: '',
-    phone_number: '',
-    name: '',
   });
-  const [userNameErr, setUserNameErr] = useState('');
-  const [IsUserNameValid, setIsUserNameValid] = useState(false);
+  const [usernameErr, setUsernameErr] = useState('');
+  const [usernameIsValid, setUsernameIsValid] = useState(false);
+  const [passwordErr, setPasswordErr] = useState('');
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
 
   const navigate = useNavigate();
 
-  const userNameHandler = async () => {
-    const regExp = /^[a-z]+[a-z0-9]{5,19}$/g;
-    if (!signupForm.username) {
-      setUserNameErr('* 아이디는 필수 입력사항입니다.');
-      setIsUserNameValid(false);
-    } else if (!regExp.test(signupForm.username)) {
-      setUserNameErr('* 잘못된 아이디 형식입니다.');
-      setIsUserNameValid(false);
-    }
-    try {
-      const userNameData = {
-        user: {
-          username: signupForm.username,
-        },
-      };
-      const data = await postUserSignup(userNameData);
-      if (data.message === '해당 사용자 아이디는 이미 존재합니다.') {
-        setUserNameErr(`*${data.message}`);
-        setIsUserNameValid(false);
-      } else if (data.message === '사용 가능한 아이디입니다.') {
-        setUserNameErr('');
-        setIsUserNameValid(true);
-      }
-    } catch (err) {
-      console.log(err);
-      setIsUserNameValid(false);
-    }
-  };
-
   const inputChangeHandler = (e) => {
-    const { value, name } = e.target;
+    const { name, value } = e.target;
     setSignupForm({
       ...signupForm,
       [name]: value,
     });
   };
 
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-    if (IsUserNameValid) {
-      setIsUserNameValid(true);
-      navigate('/login');
+  const usernameHandler = () => {
+    const regExp = /^[a-z]+[a-z0-9]{5,19}$/g;
+    if (!signupForm.username) {
+      setUsernameErr('username 필드를 추가해주세요 :)');
+      setUsernameIsValid(false);
+    } else if (!regExp.test(signupForm.username)) {
+      setUsernameErr('아이디는 20자 이내의 영문, 숫자만 사용 가능합니다.');
+      setUsernameIsValid(false);
+    }
+  };
+
+  const usernameValidationHandler = async () => {
+    try {
+      const usernameData = {
+        username: signupForm.username,
+      };
+      const res = await postUsernameIsValid(usernameData);
+      console.log(res);
+      if (res.message === '이미 사용 중인 아이디입니다.') {
+        setUsernameErr(`${res.message}`);
+        setUsernameIsValid(false);
+      } else if (res.message === '멋진 아이디네요 :)') {
+        setUsernameErr(`${res.message}`);
+        setUsernameIsValid(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const passwordHandler = () => {
+    if (!signupForm.password) {
+      setPasswordErr('비밀번호는 필수 항목입니다.');
+      setPasswordIsValid(false);
+    } else if (signupForm.password.length < 6) {
+      setPasswordErr('비밀번호는 6자 이상이어야 합니다.');
+      setPasswordIsValid(false);
+    } else {
+      setPasswordErr('');
+      setPasswordIsValid(true);
     }
   };
 
   useEffect(() => {
-    setUserNameErr();
+    setUsernameErr();
   }, [signupForm.username]);
+
+  useEffect(() => {
+    setPasswordErr();
+  }, [signupForm.password]);
+
+  const signupHandler = async (userData) => {
+    try {
+      const res = await postUserSignup(userData);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const SubmitHandler = (e) => {
+    e.preventDefault();
+    const userData = {
+      username: signupForm.username,
+      password: signupForm.password,
+    };
+    if (usernameIsValid && passwordIsValid) {
+      signupHandler(userData);
+      navigate('/login');
+    }
+  };
 
   return (
     <ContSection>
@@ -87,50 +118,29 @@ const Signup = () => {
             placeholder='영문, 숫자만 사용 가능합니다.'
             min='6'
             max='20'
-            defaultValue={signupForm}
-            onBlur={userNameHandler}
+            defaultValue={signupForm.username}
+            onBlur={usernameHandler}
             onChange={inputChangeHandler}
-            message={userNameErr}
-            required='required'
+            message={usernameErr}
           />
-          <Button size='s'>중복 확인</Button>
+          <Button onClick={usernameValidationHandler} onsize='s'>
+            중복 확인
+          </Button>
         </ContUserName>
-        <Input
-          label='비밀번호'
-          type='password'
-          name='password'
-          placeholder='6자리 이상의 비밀번호를 설정해주세요.'
-          min='6'
-        />
-        <Input
-          label='비밀번호 재확인'
-          type='password'
-          name='passwordCheck'
-          placeholder='위에서 설정한 비밀번호를 그대로 입력해주세요.'
-          min='6'
-        />
-        <Input
-          label='사용자 이름'
-          type='text'
-          name='name'
-          placeholder='2~10자 이내여야 합니다.'
-          min='2'
-          max='10'
-          required='required'
-        ></Input>
-        <Input
-          label='이메일'
-          type='email'
-          name='email'
-          placeholder='이메일 주소를 입력해주세요.'
-        />
-        <Button
-          variant={signupForm.username ? 'abled' : 'disabled'}
-          disabled={!signupForm.username}
-          size='m'
-        >
-          오픈 마켓 시작하기
-        </Button>
+        <div>
+          <Input
+            label='비밀번호'
+            type='password'
+            name='password'
+            placeholder='6자리 이상의 비밀번호를 설정해주세요.'
+            min='6'
+            defaultValue={signupForm.password}
+            onBlur={passwordHandler}
+            onChange={inputChangeHandler}
+            message={passwordErr}
+          />
+        </div>
+        <Button size='m'>{'오픈 마켓 시작하기'}</Button>
       </ContInputForm>
     </ContSection>
   );
