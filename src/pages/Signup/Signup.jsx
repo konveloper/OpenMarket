@@ -44,20 +44,40 @@ const Signup = () => {
     } else if (!regExp.test(signupForm.username)) {
       setUsernameErr('아이디는 20자 이내의 영문, 숫자만 사용 가능합니다.');
       setUsernameIsValid(false);
+    } else if (signupForm.username.length > 20) {
+      setUsernameErr('아이디는 20자 이하여야 합니다.');
+      setUsernameIsValid(false);
     }
   };
 
   const usernameValidationHandler = async () => {
-    const usernameData = {
-      username: signupForm.username,
-    };
-    const res = await postUsernameIsValid(usernameData);
-    if (res.FAIL_Message === '이미 사용 중인 아이디입니다.') {
-      setUsernameErr(`${res.FAIL_Message}`);
-      setUsernameIsValid(false);
-    } else if (res.Success === '멋진 아이디네요 :)') {
-      setUsernameErr(`${res.Success}`);
-      setUsernameIsValid(true);
+    try {
+      const regExp = /^[a-z]+[a-z0-9]{5,19}$/g;
+      const usernameData = {
+        username: signupForm.username,
+      };
+      const res = await postUsernameIsValid(usernameData);
+      if (!signupForm.username) {
+        setUsernameErr('username 필드를 추가해주세요 :)');
+        setUsernameIsValid(false);
+      } else if (!regExp.test(signupForm.username)) {
+        setUsernameErr('아이디는 20자 이내의 영문, 숫자만 사용 가능합니다.');
+        setUsernameIsValid(false);
+      } else if (signupForm.username.length > 20) {
+        setUsernameErr('아이디는 20자 이하여야 합니다.');
+        setUsernameIsValid(false);
+      } else if (res.Success === '멋진 아이디네요 :)') {
+        setUsernameErr(`${res.Success}`);
+        setUsernameIsValid(true);
+      }
+    } catch (err) {
+      if (err.response.data.FAIL_Message === '이미 사용 중인 아이디입니다.') {
+        setUsernameErr(`${err.response.data.FAIL_Message}`);
+        setUsernameIsValid(false);
+      } else {
+        setUsernameErr('');
+        setUsernameIsValid(false);
+      }
     }
   };
 
@@ -99,8 +119,18 @@ const Signup = () => {
   }, [signupForm.password]);
 
   const signupHandler = async (userData) => {
-    const res = await postSignup(userData);
-    console.log(res);
+    try {
+      const res = await postSignup(userData);
+      console.log(res);
+    } catch (err) {
+      if (err.response) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else {
+        console.log(`Error: ${err.message}`);
+      }
+    }
   };
 
   const SubmitHandler = (e) => {
@@ -130,7 +160,6 @@ const Signup = () => {
             type='text'
             name='username'
             placeholder='영문, 숫자만 사용 가능합니다.'
-            min='6'
             max='20'
             defaultValue={signupForm.username}
             onBlur={usernameHandler}
