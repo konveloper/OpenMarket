@@ -18,6 +18,7 @@ const Signup = () => {
     username: '',
     password: '',
     password2: '',
+    name: '',
   });
   const [usernameErr, setUsernameErr] = useState('');
   const [usernameIsValid, setUsernameIsValid] = useState(false);
@@ -25,6 +26,8 @@ const Signup = () => {
   const [pwIsValid, setPwIsValid] = useState(false);
   const [pwCheckErr, setPwCheckErr] = useState('');
   const [pwCheckIsValid, setPwCheckIsValid] = useState(false);
+  const [nameErr, setNameErr] = useState('');
+  const [nameIsValid, setNameisValid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -39,7 +42,7 @@ const Signup = () => {
   const usernameHandler = () => {
     const regExp = /^[a-z]+[a-z0-9]{5,19}$/g;
     if (!signupForm.username) {
-      setUsernameErr('username 필드를 추가해주세요 :)');
+      setUsernameErr('아이디는 필수 항목입니다.');
       setUsernameIsValid(false);
     } else if (!regExp.test(signupForm.username)) {
       setUsernameErr('아이디는 20자 이내의 영문, 숫자만 사용 가능합니다.');
@@ -58,7 +61,7 @@ const Signup = () => {
       };
       const res = await postUsernameIsValid(usernameData);
       if (!signupForm.username) {
-        setUsernameErr('username 필드를 추가해주세요 :)');
+        setUsernameErr('아이디는 필수 항목입니다.');
         setUsernameIsValid(false);
       } else if (!regExp.test(signupForm.username)) {
         setUsernameErr('아이디는 20자 이내의 영문, 숫자만 사용 가능합니다.');
@@ -110,6 +113,19 @@ const Signup = () => {
     }
   };
 
+  const nameHandler = () => {
+    if (!signupForm.name) {
+      setNameErr('이름은 필수 항목입니다.');
+      setNameisValid(false);
+    } else if (signupForm.name.length < 2) {
+      setNameErr('이름은 2글자 이상이어야 합니다.');
+      setNameisValid(false);
+    } else {
+      setNameErr('');
+      setNameisValid(true);
+    }
+  };
+
   useEffect(() => {
     setUsernameErr();
   }, [signupForm.username]);
@@ -117,6 +133,14 @@ const Signup = () => {
   useEffect(() => {
     setPwErr();
   }, [signupForm.password]);
+
+  useEffect(() => {
+    setPwCheckErr();
+  }, [signupForm.password2]);
+
+  useEffect(() => {
+    setNameErr();
+  }, [signupForm.name]);
 
   const signupHandler = async (userData) => {
     try {
@@ -139,10 +163,10 @@ const Signup = () => {
       username: signupForm.username,
       password: signupForm.password,
       password2: signupForm.password2,
-      phone_number: '01057989241',
-      name: 'kon',
+      phone_number: '01067989241',
+      name: signupForm.name,
     };
-    if (usernameIsValid && pwIsValid && pwCheckIsValid) {
+    if (usernameIsValid && pwIsValid && pwCheckIsValid && nameIsValid) {
       signupHandler(userData);
       alert('환영합니다!');
       navigate('/login');
@@ -177,13 +201,13 @@ const Signup = () => {
             name='password'
             placeholder='8자리 이상의 비밀번호를 설정해주세요.'
             min='8'
+            max='20'
             defaultValue={signupForm.password2}
             onBlur={pwHandler}
             onChange={inputChangeHandler}
             message={pwErr}
           />
         </div>
-
         <div>
           <Input
             label='비밀번호 재확인'
@@ -191,10 +215,24 @@ const Signup = () => {
             name='password2'
             placeholder='동일한 비밀번호를 입력해주세요.'
             min='8'
+            max='20'
             defaultValue={signupForm.password}
             onBlur={pwCheckHandler}
             onChange={inputChangeHandler}
             message={pwCheckErr}
+          />
+        </div>
+        <div>
+          <Input
+            label='이름'
+            type='text'
+            name='name'
+            placeholder='이름을 입력해주세요.'
+            min='2'
+            defaultValue={signupForm.name}
+            onBlur={nameHandler}
+            onChange={inputChangeHandler}
+            message={nameErr}
           />
         </div>
         <Button size='m'>{'오픈 마켓 시작하기'}</Button>
