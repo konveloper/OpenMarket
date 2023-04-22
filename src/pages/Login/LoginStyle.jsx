@@ -22,7 +22,7 @@ const ContInputForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 550px;
-  height: 300px;
+  height: 330px;
   margin: 0 auto;
   text-align: left;
   background-color: #fff;

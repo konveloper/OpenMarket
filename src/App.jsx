@@ -3,7 +3,7 @@ import { GlobalStyle } from 'styles/GlobalStyles';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from 'pages/Root';
 import Splash from 'pages/Splash/Splash';
-import Products from 'pages/Products/Products';
+import Home from 'pages/Home/Home';
 import ProductDetail from 'pages/ProductDetail/ProductDetail';
 import Cart from 'pages/Cart/Cart';
 import NotFound from 'pages/NotFound/NotFound';
@@ -30,8 +30,8 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
-    path: '/products',
-    element: <Products />,
+    path: '/home',
+    element: <Home />,
   },
   {
     path: '/products/<int:product_id>',
