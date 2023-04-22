@@ -27,8 +27,7 @@ function NavBar() {
           장바구니
         </CartBtn>
         <MyPageBtn>
-          <img src={iconUser} alt='마이 페이지 이미지' />
-          마이 페이지
+          <img src={iconUser} alt='마이페이지 이미지' />내 정보
         </MyPageBtn>
       </InfoDiv>
     </ContNav>

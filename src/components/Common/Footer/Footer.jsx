@@ -26,58 +26,58 @@ function Footer() {
             style={{
               fontSize: '1.4rem',
               lineHeight: '24px',
-              marginRight: '2px',
+              marginRight: '5px',
             }}
           >
-            호두샵 소개 |
+            마켓소개
           </Link>
           <Link
             to='/'
             style={{
               fontSize: '1.4rem',
               lineHeight: '24px',
-              marginRight: '2px',
+              marginRight: '5px',
             }}
           >
-            이용약관 |
+            이용약관
           </Link>
           <Link
             to='/'
             style={{
               fontSize: '1.4rem',
               lineHeight: '24px',
-              marginRight: '2px',
+              marginRight: '5px',
               fontWeight: '700',
             }}
           >
-            개인정보처리방침 |
+            개인정보처리방침
           </Link>
           <Link
             to='/'
             style={{
               fontSize: '1.4rem',
               lineHeight: '24px',
-              marginRight: '2px',
+              marginRight: '5px',
             }}
           >
-            전자금융거래약관 |
+            전자금융거래약관
           </Link>
           <Link
             to='/'
             style={{
               fontSize: '1.4rem',
               lineHeight: '24px',
-              marginRight: '2px',
+              marginRight: '5px',
             }}
           >
-            청소년보호정책 |
+            청소년보호정책
           </Link>
           <Link
             to='/'
             style={{
               fontSize: '1.4rem',
               lineHeight: '24px',
-              marginRight: '2px',
+              marginRight: '5px',
             }}
           >
             제휴문의

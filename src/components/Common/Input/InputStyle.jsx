@@ -25,7 +25,7 @@ const InputStyle = styled.input`
 `;
 
 const MessageSpan = styled.span`
-  color: #eb5757;
+  color: var(--point);
   font-style: normal;
   font-size: 1.2rem;
   line-height: 14px;

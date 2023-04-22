@@ -35,7 +35,7 @@ const ShearchInput = styled.input`
   height: 46px;
   padding: 13px 22px;
   margin-top: 20px;
-  outline: 2px solid var(--main);
+  outline: 2px solid var(--point);
   border: none;
   border-radius: 50px;
   font-size: 1.4rem;
@@ -52,13 +52,13 @@ const InfoDiv = styled.div`
 `;
 
 const CartBtn = styled.button`
-  width: 46px;
+  width: 40px;
   height: 50px;
   margin: 20px;
 `;
 
 const MyPageBtn = styled.button`
-  width: 46px;
+  width: 40px;
   height: 50px;
   margin: 20px;
 `;

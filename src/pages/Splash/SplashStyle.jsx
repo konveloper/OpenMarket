@@ -32,7 +32,6 @@ const SplashCont = styled.div`
   ${Cont}
   text-align: center;
   color: var(--main-grey);
-  margin-bottom: 100px;
   background: linear-gradient(
     334deg,
     rgb(141, 176, 250),

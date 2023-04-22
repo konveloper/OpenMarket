@@ -9,7 +9,7 @@ ${reset};
     :root {
       font-size: 62.5%;
       --main: #6200EE;
-      --point: #3700B3;
+      --point: rgb(255, 127, 172);
       --light: #BB86FC;
       --main-grey: #767676;
       --sub-grey: #c4c4c4;
