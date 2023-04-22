@@ -123,7 +123,15 @@ function Login() {
             message={pwErr}
           />
         </div>
-        <Button size='m'>로그인</Button>
+        <Button
+          variant={
+            signupForm.username && signupForm.password ? 'abled' : 'disabled'
+          }
+          disabled={!signupForm.username || !signupForm.password}
+          size='m'
+        >
+          로그인
+        </Button>
       </ContInputForm>
       <Link
         to='/login/signup'
