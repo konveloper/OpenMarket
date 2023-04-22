@@ -274,7 +274,27 @@ const Signup = () => {
             message={phoneNumberErr}
           />
         </div>
-        <Button size='m'>{'오픈 마켓 시작하기'}</Button>
+        <Button
+          variant={
+            signupForm.username &&
+            signupForm.password &&
+            signupForm.password2 &&
+            signupForm.name &&
+            signupForm.name
+              ? 'abled'
+              : 'disabled'
+          }
+          disabled={
+            !signupForm.username ||
+            !signupForm.password ||
+            !signupForm.password2 ||
+            !signupForm.name ||
+            !signupForm.name
+          }
+          size='m'
+        >
+          {'오픈 마켓 시작하기'}
+        </Button>
       </ContInputForm>
     </ContSection>
   );
