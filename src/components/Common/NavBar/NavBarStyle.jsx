@@ -26,8 +26,8 @@ const Div = styled.div`
 
 const LogoImg = styled.img`
   width: 124px;
-  height: 38px;
-  margin: 26px 30px;
+  height: 45px;
+  margin: 20px;
 `;
 
 const ShearchInput = styled.input`

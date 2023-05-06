@@ -3,7 +3,7 @@ import { Cont, IR } from 'styles/GlobalStyles';
 
 const ContProductCard = styled.div`
   ${Cont}
-  background-color: #fff;
+  width: 1024px;
 `;
 
 const H2IR = styled.h2`
